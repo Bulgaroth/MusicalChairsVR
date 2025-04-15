@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
     {
         musicSource.Pause();
         currentState = GameState.NOTINGAME;
+        print("The game ended");
     }
 
     public Chair GetNearestEmptyChair(Vector3 position)
