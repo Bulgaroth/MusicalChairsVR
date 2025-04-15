@@ -11,13 +11,16 @@ public class GameManager : MonoBehaviour
     public bool playerIsMoving { get; set; }
 
     [Header("General")]
+    [SerializeField] private int chairAmount = 8;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private Transform chairsRoot;
     [SerializeField] private float chairsRotationSpeed = 5f;
-    [SerializeField] private List<Chair> chairs;
+    [SerializeField] private Chair chairPrefab;
     [SerializeField] private AI prefabAI;
+    [SerializeField] private float chairRadius;
     private bool playerHadFoundChair { get; set; }
     private List<AI> instancedAIs;
+    private List<Chair> chairs;
 
 
     [Header("Phase 1")]
@@ -41,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         instancedAIs = new List<AI>();
-        for (int i = 0; i < chairs.Count; i++)
+        for (int i = 0; i < chairAmount; i++)
         {
             instancedAIs.Add(Instantiate(
                 prefabAI,
@@ -49,10 +52,18 @@ public class GameManager : MonoBehaviour
                 Quaternion.identity));
         }
 
+        chairs = new List<Chair>();
+        for (int i = 0; i < chairAmount; i++)
+        {
+            chairs.Add(Instantiate(
+                chairPrefab,
+                chairsRoot));
+        }
+
         StartPhase1();
     }
 
-    void ResetStates(bool resetAIPositions)
+    void ResetStates(bool resetPositions)
     {
         playerHadFoundChair = false;
 
@@ -65,7 +76,7 @@ public class GameManager : MonoBehaviour
             air.Reset();
         }
 
-        if (!resetAIPositions) return;
+        if (!resetPositions) return;
 
         float slice = 2 * Mathf.PI / instancedAIs.Count;
         float t;
@@ -80,6 +91,21 @@ public class GameManager : MonoBehaviour
 
             instancedAIs[i].transform.position = position;
         }
+
+        slice = 2 * Mathf.PI / chairs.Count;
+        for (int i = 0; i < chairs.Count; i++)
+        {
+            t = slice * i;
+            Vector3 position = new Vector3(
+                chairRadius * Mathf.Cos(t) + 0f,
+                0,
+                chairRadius * Mathf.Sin(t) + 0f
+            );
+
+            chairs[i].transform.position = position;
+            chairs[i].transform.rotation = Quaternion.Euler(0, 90 - i * (slice * Mathf.Rad2Deg), 0);
+        }
+
     }
 
     public void StartPhase1()
