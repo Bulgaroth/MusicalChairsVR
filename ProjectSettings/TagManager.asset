@@ -5,11 +5,15 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - LeftIndex
+  - RightIndex
+  - LeftFingers
+  - RightFingers
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - TpZone
   - Water
   - UI
   - 

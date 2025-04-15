@@ -33,8 +33,6 @@ public class ArmSwingingManager : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		print($"Left:{LeftHandGestureOk}");
-		print($"Right:{RightHandGestureOk}");
 		if(LeftHandGestureOk && RightHandGestureOk)
 		{
 			forwardDir = Vector3.ProjectOnPlane(camTr.forward, Vector3.up).normalized;
@@ -51,7 +49,6 @@ public class ArmSwingingManager : MonoBehaviour
 
 			float handSpeed = (handsDstMoved[0] - playerDstMoved) + (handsDstMoved[1] - playerDstMoved);
 
-			print(handSpeed);
 			if (Time.timeSinceLevelLoad > 1f && handSpeed > handSpeedDetectionThreshold)
 				ctrl.Move(handSpeed * speed * Time.fixedDeltaTime * forwardDir);
 		}
