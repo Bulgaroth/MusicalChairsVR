@@ -1310,7 +1310,7 @@ MonoBehaviour:
   prefabAI: {fileID: 96779767014506513, guid: 89e904290db2ce04881932c8360db84d, type: 3}
   aiRadius: 8
   phaseOneBaseLength: 10
-  phaseTwoBaseLength: 8
+  phaseThreeEndLength: 3
 --- !u!4 &971702091
 Transform:
   m_ObjectHideFlags: 0

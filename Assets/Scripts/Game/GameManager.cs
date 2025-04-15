@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     public void StartPhase1()
     {
         ResetStates(true);
+        foreach (AI ai in instancedAIs) ai.OnPhaseOne();
         musicSource.Play();
         currentState = GameState.PHASE1;
         currentPhaseStart = Time.time;
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
     public void StartPhase2()
     {
         ResetStates(false);
+        foreach (AI ai in instancedAIs) ai.OnPhaseTwo();
         musicSource.Pause();
         currentState = GameState.PHASE2;
         currentPhaseStart = Time.time;
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     public void StartPhase3()
     {
+        foreach (AI ai in instancedAIs) ai.OnPhaseThree();
         musicSource.Pause();
         currentState = GameState.PHASE3;
         currentPhaseStart = Time.time;
