@@ -9,6 +9,8 @@ TagManager:
   - RightIndex
   - LeftFingers
   - RightFingers
+  - LeftThumb
+  - RightThumb
   layers:
   - Default
   - TransparentFX
