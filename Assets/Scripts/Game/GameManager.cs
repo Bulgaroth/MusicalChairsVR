@@ -114,6 +114,14 @@ public class GameManager : MonoBehaviour
 			instancedAIs[i].transform.position = position;
 		}
 
+
+		continuousMove.transform.position = new Vector3(
+			aiRadius * Mathf.Cos(0) + 0f,
+			-3f,
+			aiRadius * Mathf.Sin(0) + 0f
+		);
+
+
 		slice = 2 * Mathf.PI / chairs.Count;
 		for (int i = 0; i < chairs.Count; i++)
 		{
