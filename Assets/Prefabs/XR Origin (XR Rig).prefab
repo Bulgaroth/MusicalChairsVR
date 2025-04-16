@@ -5060,6 +5060,8 @@ GameObject:
   - component: {fileID: 2413445090161480722}
   - component: {fileID: 5859532553313211169}
   - component: {fileID: 756705251472523116}
+  - component: {fileID: 3143016687251703964}
+  - component: {fileID: 6010654040883497179}
   m_Layer: 0
   m_Name: R_Palm
   m_TagString: Untagged
@@ -5118,6 +5120,7 @@ MonoBehaviour:
   left: 0
   rayInteractor: {fileID: 758476799734044552}
   tpProvider: {fileID: 3543629066842871425}
+  inMenu: 1
 --- !u!54 &756705251472523116
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5145,6 +5148,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &3143016687251703964
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3817912639211078280}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: -0.02, z: 0.05}
+--- !u!114 &6010654040883497179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3817912639211078280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934612769c71bb24a95de4661883ec6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigTr: {fileID: 7349500259472060648}
 --- !u!1 &3818956631747920625
 GameObject:
   m_ObjectHideFlags: 0
@@ -12058,6 +12095,8 @@ GameObject:
   - component: {fileID: 2137358308481514882}
   - component: {fileID: 5066192822059987192}
   - component: {fileID: 5361782185599170328}
+  - component: {fileID: 7992392454688817313}
+  - component: {fileID: 6883830725254817680}
   m_Layer: 0
   m_Name: L_Palm
   m_TagString: Untagged
@@ -12116,6 +12155,7 @@ MonoBehaviour:
   left: 1
   rayInteractor: {fileID: 742931859632756752}
   tpProvider: {fileID: 3543629066842871425}
+  inMenu: 1
 --- !u!54 &5361782185599170328
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12143,6 +12183,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &7992392454688817313
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644106199087859075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: -0.02, z: 0.05}
+--- !u!114 &6883830725254817680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644106199087859075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934612769c71bb24a95de4661883ec6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigTr: {fileID: 7349500259472060648}
 --- !u!1 &7891773875270008553
 GameObject:
   m_ObjectHideFlags: 0
@@ -13245,6 +13319,7 @@ MonoBehaviour:
   handSpeedDetectionThreshold: 0.06
   vignette: {fileID: 0}
   useVignette: 0
+  inMenu: 0
 --- !u!1 &8446021711253731573
 GameObject:
   m_ObjectHideFlags: 0
