@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         startMenuRoot.SetActive(true);
         pauseMenuRoot.SetActive(false);
-        startMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.8f;
+        startMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.4f;
         startMenuRoot.transform.forward = Camera.main.transform.forward;
     }
 
@@ -92,11 +92,11 @@ public class GameManager : MonoBehaviour
 
         if (!resetPositions) return;
 
-        float slice = 2 * Mathf.PI / instancedAIs.Count;
+        float slice = 2 * Mathf.PI / (instancedAIs.Count + 1);
         float t;
         for (int i = 0; i < instancedAIs.Count; i++)
         {
-            t = slice * i;
+            t = slice * (i + 1);
             Vector3 position = new Vector3(
                 aiRadius * Mathf.Cos(t) + 0f,
                 0,
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
         chairs.Clear();
 
         startMenuRoot.SetActive(true);
-        startMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.8f;
+        startMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.4f;
         startMenuRoot.transform.forward = Camera.main.transform.forward;
     }
 
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             pauseMenuRoot.SetActive(!pauseMenuRoot.activeInHierarchy);
-            pauseMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.8f;
+            pauseMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.4f;
             pauseMenuRoot.transform.forward = Camera.main.transform.forward;
 
             if (inPause)

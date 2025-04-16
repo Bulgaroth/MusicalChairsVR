@@ -14,7 +14,7 @@ public class AI : MonoBehaviour
     {
         stopThinking = false;
         foundChair = false;
-        reactionTime = Random.Range(0.1f, 0.5f);
+        reactionTime = Random.Range(0.75f, 1.5f);
     }
 
     public void OnPhaseOne()
