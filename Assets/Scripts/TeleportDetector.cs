@@ -33,10 +33,13 @@ public class TeleportDetector : MonoBehaviour
 		indexTag = hand + "Index";
 	}
 
+	private void Update()
+	{
+		print(nbFingersInZone);
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
-		if (inMenu) return;
-		print("Allo");
 		if (other.CompareTag(fingerTag)) ++nbFingersInZone;
 		if (nbFingersInZone == 3 && !isFistGesture) TeleportStart();
 
@@ -45,28 +48,30 @@ public class TeleportDetector : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (inMenu) return;
-
 		if (other.CompareTag(fingerTag)) --nbFingersInZone;
 		if (nbFingersInZone != 3) TeleportCancel();
 	}
 
 	private void TeleportStart()
 	{
-		if (isFistGesture) return;
+		if (isFistGesture || inMenu) return;
+
 		teleportIntent = true;
 		rayInteractor.gameObject.SetActive(true);
 	}
 
 	private void TeleportConfirm()
 	{
-		if (isFistGesture) return;
+		if (isFistGesture || inMenu) return;
+
 		if (!rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit)) return;
 		tpProvider.QueueTeleportRequest(new() { destinationPosition = hit.point });
 	}
 
 	private void TeleportCancel()
 	{
+		if (isFistGesture || inMenu) return;
+
 		teleportIntent = false;
 		rayInteractor.gameObject.SetActive(false);
 	}
