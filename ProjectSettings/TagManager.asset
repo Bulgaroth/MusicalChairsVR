@@ -11,6 +11,7 @@ TagManager:
   - RightFingers
   - LeftThumb
   - RightThumb
+  - Chair
   layers:
   - Default
   - TransparentFX
