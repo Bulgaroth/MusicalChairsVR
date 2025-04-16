@@ -3,6 +3,7 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
     [SerializeField] private float walkSpeed = 5f;
+    [SerializeField] private float runToChairSpeed = 2.5f;
     [SerializeField] private Animator animator;
     private Chair currentTarget = null;
     private bool stopThinking = false;
@@ -75,7 +76,7 @@ public class AI : MonoBehaviour
             else
             {
                 transform.LookAt(currentTarget.transform);
-                transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, walkSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, runToChairSpeed * Time.deltaTime);
             }
         }
         else if (GameManager.instance.currentState == GameManager.GameState.PHASE3 && !foundChair)

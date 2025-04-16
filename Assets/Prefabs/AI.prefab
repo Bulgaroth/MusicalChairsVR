@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 20
+  runToChairSpeed: 5
   animator: {fileID: 8543118410672725130}
 --- !u!1 &6380413651408542640
 GameObject:

@@ -10,7 +10,11 @@ public class ChairDetector : MonoBehaviour
 	{
 		if (!other.CompareTag("Chair")) return;
 		chair = other.GetComponent<Chair>();
-		chair.SetUsedBy(rigTr);
+		if (!chair.isUsed && GameManager.instance.currentState == GameManager.GameState.PHASE2)
+		{
+			chair.SetUsedBy(rigTr);
+			if (GameManager.instance) GameManager.instance.playerHadFoundChair = true;
+		}
 	}
 
 	public void ResetChair() => chair = null;

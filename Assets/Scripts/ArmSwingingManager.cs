@@ -8,7 +8,8 @@ public class ArmSwingingManager : MonoBehaviour
 	[SerializeField] private float speed; 
 	[SerializeField] private float handSpeedDetectionThreshold; 
 	[SerializeField] private GameObject vignette; 
-
+	[SerializeField] private float speed;
+	[SerializeField] private float handSpeedDetectionThreshold;
 	private Transform camTr;
 	private CharacterController ctrl;
 
@@ -41,7 +42,7 @@ public class ArmSwingingManager : MonoBehaviour
 	{
 		if (inMenu) return;
 
-		if(LeftHandGestureOk && RightHandGestureOk)
+		if (LeftHandGestureOk && RightHandGestureOk)
 		{
 			forwardDir = Vector3.ProjectOnPlane(camTr.forward, Vector3.up).normalized;
 
@@ -58,9 +59,15 @@ public class ArmSwingingManager : MonoBehaviour
 			float handSpeed = (handsDstMoved[0] - playerDstMoved) + (handsDstMoved[1] - playerDstMoved);
 
 			if (Time.timeSinceLevelLoad > 1f && handSpeed > handSpeedDetectionThreshold)
+			{
 				ctrl.Move(handSpeed * speed * Time.fixedDeltaTime * forwardDir);
-
-			if(useVignette) vignette.SetActive(currentPlayerPos != lastPlayerPos);
+				if (GameManager.instance) GameManager.instance.playerIsMoving = true;
+				if(useVignette) vignette.SetActive(currentPlayerPos != lastPlayerPos);
+			}
+			else
+			{
+				if (GameManager.instance) GameManager.instance.playerIsMoving = false;
+			}
 		}
 
 		lastPlayerPos = currentPlayerPos;
