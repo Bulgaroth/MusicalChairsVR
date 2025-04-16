@@ -10,6 +10,6 @@ public class Chair : MonoBehaviour
 	{
 		if (isUsed) return;
 		linkedTransform = user;
-		print($"Utilisé par : {user.name}");
+		//print($"Utilisé par : {user.name}");
 	}
 }
