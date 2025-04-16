@@ -44,6 +44,13 @@ public class GameManager : MonoBehaviour
         playerIsMoving = false;
     }
 
+    void Start()
+    {
+        startMenuRoot.SetActive(true);
+        pauseMenuRoot.SetActive(false);
+        startMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.8f;
+        startMenuRoot.transform.forward = Camera.main.transform.forward;
+    }
 
 
     public void StartGame(int amountOfChairs)
@@ -152,6 +159,8 @@ public class GameManager : MonoBehaviour
         chairs.Clear();
 
         startMenuRoot.SetActive(true);
+        startMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.8f;
+        startMenuRoot.transform.forward = Camera.main.transform.forward;
     }
 
     public Chair GetNearestEmptyChair(Vector3 position)
@@ -183,7 +192,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.tabKey.isPressed)
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             pauseMenuRoot.SetActive(!pauseMenuRoot.activeInHierarchy);
             pauseMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.8f;
@@ -195,7 +204,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                currentPhaseStart = Mathf.Clamp(currentPhaseStart - Time.time - pauseStart, 0f, 100f);
+                currentPhaseStart = Mathf.Clamp(currentPhaseStart + Time.time - pauseStart, 0f, 100f);
             }
         }
 
@@ -216,7 +225,7 @@ public class GameManager : MonoBehaviour
         else if (currentState == GameState.PHASE2)
         {
 
-            if (Keyboard.current.enterKey.IsPressed() && !playerHadFoundChair)
+            if (Keyboard.current.enterKey.wasPressedThisFrame && !playerHadFoundChair)
             {
                 Chair found = GetNearestEmptyChair(Vector3.zero);
                 if (found)
