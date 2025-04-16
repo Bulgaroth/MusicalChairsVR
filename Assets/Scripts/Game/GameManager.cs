@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Chair chairPrefab;
     [SerializeField] private AI prefabAI;
     [SerializeField] private float chairRadius;
-    private bool playerHadFoundChair { get; set; }
+    public bool playerHadFoundChair { get; set; }
     private List<AI> instancedAIs;
     private List<Chair> chairs;
 

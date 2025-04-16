@@ -3,8 +3,8 @@ using UnityEngine;
 public class ArmSwingingManager : MonoBehaviour
 {
 	[SerializeField] private Transform[] handsTr;
-	[SerializeField] private float speed; 
-	[SerializeField] private float handSpeedDetectionThreshold; 
+	[SerializeField] private float speed;
+	[SerializeField] private float handSpeedDetectionThreshold;
 
 	private Transform camTr;
 	private CharacterController ctrl;
@@ -33,7 +33,7 @@ public class ArmSwingingManager : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if(LeftHandGestureOk && RightHandGestureOk)
+		if (LeftHandGestureOk && RightHandGestureOk)
 		{
 			forwardDir = Vector3.ProjectOnPlane(camTr.forward, Vector3.up).normalized;
 
@@ -50,7 +50,14 @@ public class ArmSwingingManager : MonoBehaviour
 			float handSpeed = (handsDstMoved[0] - playerDstMoved) + (handsDstMoved[1] - playerDstMoved);
 
 			if (Time.timeSinceLevelLoad > 1f && handSpeed > handSpeedDetectionThreshold)
+			{
 				ctrl.Move(handSpeed * speed * Time.fixedDeltaTime * forwardDir);
+				if (GameManager.instance) GameManager.instance.playerIsMoving = true;
+			}
+			else
+			{
+				if (GameManager.instance) GameManager.instance.playerIsMoving = false;
+			}
 		}
 
 		lastPlayerPos = currentPlayerPos;
