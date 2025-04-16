@@ -8,8 +8,6 @@ public class Chair : MonoBehaviour
 
 	public void SetUsedBy(Transform user)
 	{
-		if (isUsed) return;
 		linkedTransform = user;
-		//print($"Utilisé par : {user.name}");
 	}
 }

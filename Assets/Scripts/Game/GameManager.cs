@@ -176,7 +176,6 @@ public class GameManager : MonoBehaviour
                 nearestDist = dist;
             }
         }
-
         return nearest;
     }
 
