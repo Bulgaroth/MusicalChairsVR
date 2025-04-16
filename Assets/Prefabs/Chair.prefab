@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6401756445458586917}
   m_Layer: 0
   m_Name: Chair
-  m_TagString: Untagged
+  m_TagString: Chair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 8362254158328016291}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Chair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 4264076523260485484}
   m_Layer: 0
   m_Name: Chair (1)
-  m_TagString: Untagged
+  m_TagString: Chair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
