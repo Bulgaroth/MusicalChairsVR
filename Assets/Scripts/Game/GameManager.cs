@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
 			-3f,
 			aiRadius * Mathf.Sin(0) + 0f
 		);
+		continuousMove.transform.rotation = Quaternion.Euler(0, -90, 0);
 
 
 		slice = 2 * Mathf.PI / chairs.Count;
