@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 public class ArmSwingingManager : MonoBehaviour
 {
@@ -8,8 +6,6 @@ public class ArmSwingingManager : MonoBehaviour
 	[SerializeField] private float speed; 
 	[SerializeField] private float handSpeedDetectionThreshold; 
 	[SerializeField] private GameObject vignette; 
-	[SerializeField] private float speed;
-	[SerializeField] private float handSpeedDetectionThreshold;
 	private Transform camTr;
 	private CharacterController ctrl;
 
