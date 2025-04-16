@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 	private List<AI> instancedAIs;
 	private List<Chair> chairs;
 
-
 	[Header("Phase 1")]
 	[SerializeField] private float aiRadius = 8f;
 	[SerializeField] private float phaseOneBaseLength;
@@ -57,7 +56,6 @@ public class GameManager : MonoBehaviour
 		startMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.5f;
 		startMenuRoot.transform.forward = Camera.main.transform.forward;
 	}
-
 
 	public void StartGame(int amountOfChairs)
 	{
@@ -120,7 +118,7 @@ public class GameManager : MonoBehaviour
 			-3f,
 			aiRadius * Mathf.Sin(0) + 0f
 		);
-		continuousMove.transform.rotation = Quaternion.Euler(0, -90, 0);
+		//continuousMove.transform.rotation = Quaternion.Euler(0, -90, 0);
 
 
 		slice = 2 * Mathf.PI / chairs.Count;
