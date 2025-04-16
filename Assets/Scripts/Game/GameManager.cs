@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     public enum GameState { NOTINGAME, PHASE1, PHASE2, PHASE3 };
     public GameState currentState { get; private set; }
     public bool playerIsMoving { get; set; }
+    public bool inPause { get { return pauseMenuRoot.activeInHierarchy; } }
 
     [Header("General")]
-    [SerializeField] private int chairAmount = 8;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private Transform chairsRoot;
     [SerializeField] private float chairsRotationSpeed = 5f;
@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     [Header("Phase 3")]
     [SerializeField] private float phaseThreeEndLength = 3f;
 
+    [Header("Menus")]
+    [SerializeField] private GameObject startMenuRoot;
+    [SerializeField] private GameObject pauseMenuRoot;
+    private float pauseStart;
+
     private float currentPhaseStart;
 
     void Awake()
@@ -37,14 +42,16 @@ public class GameManager : MonoBehaviour
         instance = this;
         currentState = GameState.NOTINGAME;
         playerIsMoving = false;
-
-        StartGame();
     }
 
-    public void StartGame()
+
+
+    public void StartGame(int amountOfChairs)
     {
+        startMenuRoot.SetActive(false);
+
         instancedAIs = new List<AI>();
-        for (int i = 0; i < chairAmount; i++)
+        for (int i = 0; i < amountOfChairs; i++)
         {
             instancedAIs.Add(Instantiate(
                 prefabAI,
@@ -53,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
 
         chairs = new List<Chair>();
-        for (int i = 0; i < chairAmount; i++)
+        for (int i = 0; i < amountOfChairs; i++)
         {
             chairs.Add(Instantiate(
                 chairPrefab,
@@ -138,7 +145,13 @@ public class GameManager : MonoBehaviour
     {
         musicSource.Pause();
         currentState = GameState.NOTINGAME;
-        print("The game ended");
+
+        foreach (AI ai in instancedAIs) Destroy(ai.gameObject);
+        instancedAIs.Clear();
+        foreach (Chair chair in chairs) Destroy(chair.gameObject);
+        chairs.Clear();
+
+        startMenuRoot.SetActive(true);
     }
 
     public Chair GetNearestEmptyChair(Vector3 position)
@@ -158,9 +171,36 @@ public class GameManager : MonoBehaviour
         return nearest;
     }
 
+    public void ChangeVignette(bool useVignette)
+    {
+        // TODO
+    }
+
+    public void ChangeContinuous(bool useContinuous)
+    {
+        // TODO
+    }
 
     void Update()
     {
+        if (Keyboard.current.tabKey.isPressed)
+        {
+            pauseMenuRoot.SetActive(!pauseMenuRoot.activeInHierarchy);
+            pauseMenuRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.8f;
+            pauseMenuRoot.transform.forward = Camera.main.transform.forward;
+
+            if (inPause)
+            {
+                pauseStart = Time.time;
+            }
+            else
+            {
+                currentPhaseStart = Mathf.Clamp(currentPhaseStart - Time.time - pauseStart, 0f, 100f);
+            }
+        }
+
+        if (inPause) return;
+
         if (currentState == GameState.PHASE1)
         {
             if (!playerIsMoving)

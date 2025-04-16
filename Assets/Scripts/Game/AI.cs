@@ -34,6 +34,8 @@ public class AI : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.inPause) return;
+
         if (GameManager.instance.currentState == GameManager.GameState.PHASE1)
         {
             transform.forward = -transform.position.normalized;
