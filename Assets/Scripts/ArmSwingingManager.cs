@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class ArmSwingingManager : MonoBehaviour
 {
 	[SerializeField] private Transform[] handsTr;
 	[SerializeField] private float speed; 
 	[SerializeField] private float handSpeedDetectionThreshold; 
+	[SerializeField] private GameObject vignette; 
 
 	private Transform camTr;
 	private CharacterController ctrl;
@@ -15,6 +18,9 @@ public class ArmSwingingManager : MonoBehaviour
 	private readonly Vector3[] handsLastPos = new Vector3[2];
 	private readonly Vector3[] handsCurrentPos = new Vector3[2];
 	private Vector3 forwardDir;
+
+	public bool useVignette;
+	public bool inMenu = true;
 
 	public bool LeftHandGestureOk { get; set; }
 	public bool RightHandGestureOk { get; set; }
@@ -33,6 +39,8 @@ public class ArmSwingingManager : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if (inMenu) return;
+
 		if(LeftHandGestureOk && RightHandGestureOk)
 		{
 			forwardDir = Vector3.ProjectOnPlane(camTr.forward, Vector3.up).normalized;
@@ -51,6 +59,8 @@ public class ArmSwingingManager : MonoBehaviour
 
 			if (Time.timeSinceLevelLoad > 1f && handSpeed > handSpeedDetectionThreshold)
 				ctrl.Move(handSpeed * speed * Time.fixedDeltaTime * forwardDir);
+
+			if(useVignette) vignette.SetActive(currentPlayerPos != lastPlayerPos);
 		}
 
 		lastPlayerPos = currentPlayerPos;

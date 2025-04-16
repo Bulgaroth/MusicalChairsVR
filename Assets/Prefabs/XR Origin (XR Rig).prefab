@@ -1256,7 +1256,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -4470,7 +4470,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RayInteractDetector, Assembly-CSharp
-        m_MethodName: StartSelect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4485,7 +4485,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RayInteractDetector, Assembly-CSharp
-        m_MethodName: CancelSelect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4519,7 +4519,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RayInteractDetector, Assembly-CSharp
-        m_MethodName: StartSelect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4534,7 +4534,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RayInteractDetector, Assembly-CSharp
-        m_MethodName: CancelSelect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13088,7 +13088,6 @@ GameObject:
   - component: {fileID: 5104787491942404766}
   - component: {fileID: 6553950035253427481}
   - component: {fileID: 6239411121989369461}
-  - component: {fileID: 4738112080600091036}
   m_Layer: 2
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -13244,21 +13243,8 @@ MonoBehaviour:
   - {fileID: 6848044221734756191}
   speed: 70
   handSpeedDetectionThreshold: 0.06
---- !u!114 &4738112080600091036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8414812316127511498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0862504a39f6f842a1d7f992920c497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  left: 0
-  rayInteractor: {fileID: 742931859632756752}
-  tpProvider: {fileID: 3543629066842871425}
+  vignette: {fileID: 0}
+  useVignette: 0
 --- !u!1 &8446021711253731573
 GameObject:
   m_ObjectHideFlags: 0

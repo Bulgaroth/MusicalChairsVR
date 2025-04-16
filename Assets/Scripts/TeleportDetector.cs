@@ -14,6 +14,8 @@ public class TeleportDetector : MonoBehaviour
 
 	private bool teleportIntent;
 	private bool isFistGesture;
+	public bool inMenu = true;
+
 	public bool IsFistGesture
 	{
 		get => isFistGesture;
@@ -33,6 +35,8 @@ public class TeleportDetector : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (inMenu) return;
+		print("Allo");
 		if (other.CompareTag(fingerTag)) ++nbFingersInZone;
 		if (nbFingersInZone == 3 && !isFistGesture) TeleportStart();
 
@@ -41,6 +45,8 @@ public class TeleportDetector : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
+		if (inMenu) return;
+
 		if (other.CompareTag(fingerTag)) --nbFingersInZone;
 		if (nbFingersInZone != 3) TeleportCancel();
 	}
